@@ -1,25 +1,38 @@
 public class Ship {
-    private int[][] field = new int[10][10];
-    private int[][] firstShips;
-    private int[][] secondShips;
+    private String[][] firstPlayerField = new String[10][10];
+    private String[][] secondPlayerField = new String[10][10];
+    private int x;
+    private int y;
 
-    public Ship(int[][] field) {
-        this.field = field;
+    public int getX() {
+        return x;
     }
 
-    public int[][] getFirstShips() {
-        return firstShips;
+    public void setX(int x) {
+        this.x = x;
     }
 
-    public void setFirstShips(int[][] firstShips) {
-        this.firstShips = firstShips;
+    public int getY() {
+        return y;
     }
 
-    public int[][] getSecondShips() {
-        return secondShips;
+    public void setY(int y) {
+        this.y = y;
     }
 
-    public void setSecondShips(int[][] secondShips) {
-        this.secondShips = secondShips;
+    public String[][] getFirstPlayerField() {
+        return firstPlayerField;
+    }
+
+    public void setFirstPlayerField(String[][] firstPlayerField) {
+        this.firstPlayerField = firstPlayerField;
+    }
+
+    public String[][] getSecondPlayerField() {
+        return secondPlayerField;
+    }
+
+    public void setSecondPlayerField(String[][] secondPlayerField) {
+        this.secondPlayerField = secondPlayerField;
     }
 }
