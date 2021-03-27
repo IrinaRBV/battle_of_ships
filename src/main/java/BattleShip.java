@@ -1,6 +1,11 @@
 public class BattleShip implements Play {
+
+
     @Override
-    public void addShip(Ship ship) {
+    public void addShip() {
+
+        Reader reader = new ReaderShip();
+        reader.read();
 
     }
 
