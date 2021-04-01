@@ -1,20 +1,20 @@
 public class Ship {
-    private int[][] firstShipsFields;
-    private int[][] secondShipsFields;
+    private String[][] firstShipsFields;
+    private String[][] secondShipsFields;
 
-    public int[][] getFirstShipsFields() {
+    public String[][] getFirstShipsFields() {
         return firstShipsFields;
     }
 
-    public void setFirstShipsFields(int[][] firstShipsFields) {
+    public void setFirstShipsFields(String[][] firstShipsFields) {
         this.firstShipsFields = firstShipsFields;
     }
 
-    public int[][] getSecondShipsFields() {
+    public String[][] getSecondShipsFields() {
         return secondShipsFields;
     }
 
-    public void setSecondShipsFields(int[][] secondShipsFields) {
+    public void setSecondShipsFields(String[][] secondShipsFields) {
         this.secondShipsFields = secondShipsFields;
     }
 }

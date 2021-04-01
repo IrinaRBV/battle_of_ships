@@ -1,11 +1,9 @@
 public class BattleShip implements Play {
 
-
     @Override
     public void addShip() {
 
-        Reader reader = new ReaderShip();
-        reader.read();
+
 
     }
 
@@ -31,6 +29,11 @@ public class BattleShip implements Play {
 
     @Override
     public void isWin() {
+
+    }
+
+    @Override
+    public void draw() {
 
     }
 }

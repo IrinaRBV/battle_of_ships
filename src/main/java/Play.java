@@ -5,4 +5,5 @@ public interface Play {
     boolean wounded();
     boolean doNotWounded();
     void isWin();
+    void draw();
 }
