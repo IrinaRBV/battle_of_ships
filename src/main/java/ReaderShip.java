@@ -3,15 +3,14 @@ import java.util.Scanner;
 
 public class ReaderShip implements Reader {
     private String[] split;
-    Field field = new Field();
+    Field fieldPlayer = new Field();
+    Ship shipPlayer = new Ship();
+    String[][] array = new String[10][10];
     Scanner scanner = new Scanner(System.in);
-    private int x;
-    private int y;
 
 
     @Override
     public void read() {
-        Ship ship = new Ship();
         System.out.println("Расставляем корабли для первого игрока!");
 
         // 4 т.к 4 вида корабля
@@ -25,20 +24,16 @@ public class ReaderShip implements Reader {
             } else {
                 countShips(4);
             }
-//            System.out.println(Arrays.toString(split));
-//            System.out.println("Длина массива " + split.length);
-
         }
     }
 
-    public void splitArray() {
+    public void placeShips() {
         for(int i = 0; i < split.length; i++) {
             String s = split[i];
-            x = Integer.parseInt(s.substring(0,1));
-            y = Integer.parseInt(s.substring(2,3));
-            field.setX(x);
-            field.setY(y);
-//            System.out.println("x = " + x + " y = " + y);
+            int x = Integer.parseInt(s.substring(0,1));
+            int y = Integer.parseInt(s.substring(2,3));
+            array[x][y] = fieldPlayer.getCellShip();
+            shipPlayer.setFirstShipsFields(array);
         }
     }
 
@@ -47,7 +42,7 @@ public class ReaderShip implements Reader {
         for (int i = 0; i < count; i++) {
             System.out.println(nameShips(count));
             split = scanner.nextLine().split(";");
-            splitArray();
+            placeShips();
         }
     }
 

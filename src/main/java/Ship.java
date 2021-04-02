@@ -1,6 +1,6 @@
 public class Ship {
-    private String[][] firstShipsFields;
-    private String[][] secondShipsFields;
+    static String[][] firstShipsFields;
+    static String[][] secondShipsFields;
 
     public String[][] getFirstShipsFields() {
         return firstShipsFields;

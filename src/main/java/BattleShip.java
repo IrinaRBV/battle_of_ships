@@ -4,7 +4,6 @@ public class BattleShip implements Play {
     public void addShip() {
 
 
-
     }
 
     @Override
