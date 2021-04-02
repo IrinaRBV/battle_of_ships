@@ -18,16 +18,20 @@ public class Field implements Rendering {
     @Override
     public void drawField() {
 //        readerShip.read();
-        for (int i = 0; i < Ship.firstShipsFields.length; i++) {
-            for (int j = 0; j < Ship.firstShipsFields[i].length; j++) {
-                if (Ship.firstShipsFields[i][j] == null) {
-                    Ship.firstShipsFields[i][j] = cellEmpty;
+        addCell(Ship.firstShipsFields);
+//        addCell(Ship.secondShipsFields);
+    }
+
+    public void addCell(String[][] array) {
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array[i].length; j++) {
+                if (array[i][j] == null) {
+                    array[i][j] = cellEmpty;
                 }
-                System.out.print(Ship.firstShipsFields[i][j] + "\t");
+                System.out.print(array[i][j] + "\t");
             }
             System.out.println();
         }
-
     }
 
     // Куда пихать этот метод хз пока
