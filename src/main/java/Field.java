@@ -20,7 +20,7 @@ public class Field implements Rendering {
     }
 
     public void addCell(String[][] array) {
-        System.out.println("\t" + "A" + "\t" + "B" + "\t" + "C" + "\t" + "D" + "\t" + "F" + "\t" + "G" + "\t" + "H" + "\t" + "I" + "\t" + "G" + "\t" + "K");
+        System.out.println(String.format("%sA %sB %sC %sD %sF %sG %sH %sI %sG 2%sK", "\t", "\t", "\t", "\t", "\t", "\t", "\t", "\t", "\t", "\t"));
         for (int i = 0; i < array.length; i++) {
             System.out.print(i + "\t");
             for (int j = 0; j < array[i].length; j++) {
