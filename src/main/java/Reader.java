@@ -1,3 +1,3 @@
 public interface Reader {
-    void read();
+    void read(String namePlayer);
 }

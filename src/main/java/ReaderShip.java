@@ -10,8 +10,8 @@ public class ReaderShip implements Reader {
 
 
     @Override
-    public void read() {
-        System.out.println("Расставляем корабли для игрока!");
+    public void read(String namePlayer) {
+        System.out.println(namePlayer + ", расставляем ваши корабли на поле");
 
         // 4 т.к 4 вида корабля
         for (int i = 0; i < 4; i++) {

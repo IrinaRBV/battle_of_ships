@@ -5,7 +5,6 @@ public class Field implements Rendering {
     private String cellHalo = "\uD83D\uDFE6";
     private String cellWounded = "\uD83D\uDFE5";
     private String cellEmpty = "⬜";
-//    ReaderShip readerShip = new ReaderShip();
 
     public String getCellShip() {
         return cellShip;
@@ -17,13 +16,13 @@ public class Field implements Rendering {
 
     @Override
     public void drawField() {
-//        readerShip.read();
         addCell(Ship.firstShipsFields);
-//        addCell(Ship.secondShipsFields);
     }
 
     public void addCell(String[][] array) {
+        System.out.println("\t" + "A" + "\t" + "B" + "\t" + "C" + "\t" + "D" + "\t" + "F" + "\t" + "G" + "\t" + "H" + "\t" + "I" + "\t" + "G" + "\t" + "K");
         for (int i = 0; i < array.length; i++) {
+            System.out.print(i + "\t");
             for (int j = 0; j < array[i].length; j++) {
                 if (array[i][j] == null) {
                     array[i][j] = cellEmpty;
@@ -33,14 +32,5 @@ public class Field implements Rendering {
             System.out.println();
         }
     }
-
-    // Куда пихать этот метод хз пока
-    public void drawMarks() {
-        System.out.println("A B C D F G H I G K");
-        for (int i = 1; i < 11; i++) {
-            System.out.print(i + " ");
-        }
-    }
-
 
 }
