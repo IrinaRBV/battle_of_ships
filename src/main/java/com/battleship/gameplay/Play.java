@@ -1,3 +1,5 @@
+package com.battleship.gameplay;
+
 public interface Play {
     void addShip();
     void shotFirst();

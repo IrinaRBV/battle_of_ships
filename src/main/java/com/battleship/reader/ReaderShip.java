@@ -1,52 +1,51 @@
-import java.util.Arrays;
+package com.battleship.reader;
+
+import com.battleship.rendering.Field;
+import com.battleship.ship.Ship;
+
 import java.util.Scanner;
 
 public class ReaderShip implements Reader {
     private String[] split;
-    Field fieldPlayer = new Field();
-    Ship shipPlayer = new Ship();
-    String[][] array = new String[10][10];
-    Scanner scanner = new Scanner(System.in);
-
+    private Ship shipPlayer = new Ship();
 
     @Override
-    public void read(String namePlayer) {
+    public void read(String namePlayer, String[][] arrayField) {
         System.out.println(namePlayer + ", расставляем ваши корабли на поле");
 
         // 4 т.к 4 вида корабля
         for (int i = 0; i < 4; i++) {
             if (i < 1) {
-                countShips(1);
+                countShips(1, arrayField);
             } else if (i < 2) {
-                countShips(2);
+                countShips(2, arrayField);
             } else if (i < 3) {
-                countShips(3);
+                countShips(3, arrayField);
             } else {
-                countShips(4);
+                countShips(4, arrayField);
             }
         }
     }
 
-    public void placeShips() {
-        for(int i = 0; i < split.length; i++) {
-            String s = split[i];
-            int x = Integer.parseInt(s.substring(0,1));
-            int y = Integer.parseInt(s.substring(2,3));
-            array[x][y] = fieldPlayer.getCellShip();
-            shipPlayer.setFirstShipsFields(array);
+    private void placeShips(String[][] array) {
+        for (String s : split) {
+            int x = Integer.parseInt(s.substring(0, 1));
+            int y = Integer.parseInt(s.substring(2, 3));
+            array[x][y] = Field.CELL_SHIP;
         }
     }
 
     // Метод для подсчёта кораблей
-    public void countShips(int count) {
+    private void countShips(int count, String[][] array) {
+        Scanner scanner = new Scanner(System.in);
         for (int i = 0; i < count; i++) {
             System.out.println(nameShips(count));
             split = scanner.nextLine().split(";");
-            placeShips();
+            placeShips(array);
         }
     }
 
-    public String nameShips(int count) {
+    private String nameShips(int count) {
         String oneShips = "Введите координаты четырехпалубного корабля (формат: x,y;x,y;x,y;x,y)";
         String twoShips = "Введите координаты трехпалубного корабля (формат: x,y;x,y;x,y)";
         String threeShips = "Введите координаты двухпалубного корабля (формат: x,y;x,y)";

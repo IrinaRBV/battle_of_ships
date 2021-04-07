@@ -1,3 +1,5 @@
+package com.battleship.gameplay;
+
 public class BattleShip implements Play {
 
     @Override
