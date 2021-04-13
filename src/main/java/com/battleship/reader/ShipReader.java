@@ -22,31 +22,36 @@ public class ShipReader implements NewReader {
         Scanner scanner = new Scanner(System.in);
         for (int i = 0; i < array.length; i++) {
             if (i == 0) { // подумать, как можно избавиться от константных значений (0)
-                System.out.println("Введите координаты четырехпалубного корабля (формат: x,y;x,y;x,y;x,y)");
-                setShip(array, scanShip(scanner, BATTLE_SHIP));
+                setShips("Введите координаты четырехпалубного корабля (формат: x,y;x,y;x,y;x,y)",
+                        array, scanner, BATTLE_SHIP);
             }
             if (i >= 1 && i <= 2) { // подумать, как можно избавиться от константных значений (1,2)
-                System.out.println("Введите координаты трехпалубного корабля (формат: x,y;x,y;x,y)");
-                setShip(array, scanShip(scanner, DESTROYER));
+                setShips("Введите координаты трехпалубного корабля (формат: x,y;x,y;x,y)",
+                        array, scanner, DESTROYER);
             }
             if (i >= 3 && i <= 5) { // подумать, как можно избавиться от константных значений (3,5)
-                System.out.println("Введите координаты двухпалубного корабля (формат: x,y;x,y)");
-                setShip(array, scanShip(scanner, SUBMARINE));
+                setShips("Введите координаты двухпалубного корабля (формат: x,y;x,y)",
+                        array, scanner, SUBMARINE);
             }
             if (i >= 6) { // подумать, как можно избавиться от константных значений (6)
-                System.out.println("Введите координаты однопалубного корабля (формат: x,y)");
-                setShip(array, scanShip(scanner, CRUISER));
+                setShips("Введите координаты однопалубного корабля (формат: x,y))",
+                        array, scanner, CRUISER);
             }
         }
         return array;
     }
 
-    private void setShip(String[][] array, String[] ship) {
-        for (String s : ship) {
-            int x = Integer.parseInt(s.substring(0, 1));
-            int y = Integer.parseInt(s.substring(2, 3));
-            array[x][y] = SHIP;
+    private void setShips(String name, String[][] array, Scanner scanner, int count) {
+        System.out.println(name);
+        for (String ship : scanShip(scanner, count)) {
+            setShip(array, ship);
         }
+    }
+
+    private void setShip(String[][] array, String ship) {
+        int x = Integer.parseInt(ship.substring(0, 1));
+        int y = Integer.parseInt(ship.substring(2, 3));
+        array[x][y] = SHIP;
     }
 
     private String[] scanShip(Scanner scanner, int count) {
