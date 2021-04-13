@@ -1,6 +1,6 @@
 package com.battleship.reader;
 
-import com.battleship.rendering.Field;
+import com.battleship.rendering.Render;
 import com.battleship.ship.Ship;
 
 import java.util.Scanner;
@@ -31,7 +31,7 @@ public class ReaderShip implements Reader {
         for (String s : split) {
             int x = Integer.parseInt(s.substring(0, 1));
             int y = Integer.parseInt(s.substring(2, 3));
-            array[x][y] = Field.CELL_SHIP;
+            array[x][y] = Render.CELL_SHIP;
         }
     }
 
