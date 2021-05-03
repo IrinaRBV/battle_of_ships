@@ -2,11 +2,11 @@ package com.battleship.rendering;
 
 
 public class Render implements Rendering {
-    //todo константы должны быть private
-    public static final String CELL_SHIP = "\uD83D\uDEE5";
-    public static final String CELL_HALO = "\uD83D\uDFE6";
-    public static final String CELL_WOUNDED = "\uD83D\uDFE5";
-    public static final String CELL_EMPTY = "⬜";
+    //todo константы должны быть private +
+    private static final String CELL_SHIP = "\uD83D\uDEE5";
+    private static final String CELL_HALO = "\uD83D\uDFE6";
+    private static final String CELL_WOUNDED = "\uD83D\uDFE5";
+    private static final String CELL_EMPTY = "⬜";
 
     @Override
     public void drawField(String[][] array) {

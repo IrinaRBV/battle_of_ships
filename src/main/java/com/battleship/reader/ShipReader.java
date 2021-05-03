@@ -1,6 +1,9 @@
 package com.battleship.reader;
 
+import java.io.Serializable;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * @author Anastasia Fomkina
@@ -12,7 +15,6 @@ public class ShipReader implements NewReader {
     private static final int DESTROYER = 3;
     private static final int SUBMARINE = 2;
     private static final int CRUISER = 1;
-
     private static final String SHIP = "ship";
 
     @Override
@@ -37,7 +39,9 @@ public class ShipReader implements NewReader {
                 setShips("Введите координаты однопалубного корабля (формат: x,y))",
                         array, scanner, CRUISER);
             }
+
         }
+
         return array;
     }
 
@@ -55,9 +59,10 @@ public class ShipReader implements NewReader {
     }
 
     private String[] scanShip(Scanner scanner, int count) {
-        //todo добавить метод, который убирает всю лишнюю гадость из scanner.nextLine(), а потом уже разделять на String[]
-        //todo добавить метод, который заменяет все точки на запятые
-        String[] ship = scanner.nextLine().split(";");
+        //todo добавить метод, который убирает всю лишнюю гадость из scanner.nextLine(), а потом уже разделять на String[] +
+        //todo добавить метод, который заменяет все точки на запятые+
+        String[] ship = new String[count];
+        ship = checkString(ship, scanner);
         //todo расширить проверку на адекватность корабля (например, чтобы он был цельным)
         checkShip(scanner, ship, count);
         return ship;
@@ -66,11 +71,48 @@ public class ShipReader implements NewReader {
     private void checkShip(Scanner scanner, String[] ship, int count) {
         while (!isCorrectShip(ship, count)) {
             System.out.printf("Введен %s - палубный корабль. Попробуй еще раз: %n", ship.length);
-            ship = scanner.nextLine().split(";");
+            ship = checkString(ship, scanner);
         }
     }
 
     private boolean isCorrectShip(String[] ship, int count) {
         return ship.length == count;
+        // {1,4 5,3 4,7 5,6} -> 4 count
+    }
+
+    private String[] checkString(String[] ship, Scanner scanner) {
+        Pattern numbers = Pattern.compile("(\\d|\\s\\d|\\s\\d\\s|\\b\\s)(,|\\.)(\\d|\\s\\d|\\s\\d\\s|\\b\\s)");
+        String line = scanner.nextLine();
+
+        for (int i = 0; i < ship.length; i++) {
+            ship = line.split(";");
+            for (int j = 0; j < ship[i].length(); j++) {
+                line = ship[i];
+                Matcher matcher = numbers.matcher(line);
+                if (!matcher.find()) {
+                    System.out.printf("Введи корректные данные для %s - полубного корабля. Попробуй еще раз: %n", ship.length);
+                    line = scanner.nextLine();
+                    ship = line.split(";");
+                    i = 0;
+                } else {
+                    line = checkSpaceString(line);
+                    line = checkPointString(line);
+                    ship[i] = line;
+                    line = ship[i++];
+                    if (i == ship.length) {
+                        break;
+                    }
+                }
+            }
+        }
+        return ship;
+    }
+
+    private String checkSpaceString(String line) {
+        return line.replaceAll(" ", "");
+    }
+
+    private String checkPointString(String line) {
+        return line.replaceAll("\\.", ",");
     }
 }
